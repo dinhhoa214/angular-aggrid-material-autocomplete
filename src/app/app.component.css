@@ -1,0 +1,180 @@
+.clear-theme #main #topBtnArea {
+    background-color: #383838;
+}
+
+#main #topBtnArea {
+    width: calc(100%);
+    position: relative;
+    min-height: 34px;
+    background-color: #383838;
+    box-shadow: 0px 2px 5px 0px rgba(0, 0, 0, 0.3);
+    z-index: 998;
+    padding: 0 25px;
+    /* letter-spacing: -0.4em; */
+}
+
+.clear-theme #main #topBtnArea select,
+.green #main #topBtnArea select {
+    color: #141414;
+}
+
+.clear-theme #main #topBtnArea select,
+.green #main #topBtnArea select {
+    background-color: #fff;
+}
+
+#main.large-text #topBtnArea select,
+#scrollThumbnail.large-text .btnArea select.form-control,
+#scrollThumbnail.large-text .btnArea input.form-control,
+#scrollThumbnail.large-text .btnArea button.btn.multiselect {
+    display: inline-block;
+    height: 22px;
+    font-size: 12px;
+}
+
+main #topBtnArea select {
+    width: auto;
+    margin: 0 12px;
+    padding: 0 5px;
+    font-size: 10px;
+    vertical-align: middle;
+}
+
+
+/* Search */
+
+#div-search {
+    margin: 2px;
+}
+
+.input-group {
+    display: inline-block;
+}
+
+#search-box-flexdatalist {
+    display: inline-block;
+}
+
+input#flex0 {
+    padding-left: 34px;
+    border-radius: 4px;
+}
+
+.input-group .form-control {
+    float: none;
+    margin-right: 10px;
+    vertical-align: middle;
+}
+
+.inner-addon .glyphicon {
+    position: absolute;
+    padding: 10px;
+    z-index: 4;
+    opacity: 0.7;
+}
+
+.left-addon {
+    left: 0px;
+    pointer-events: none;
+}
+
+.inner-addon .glyphicon {
+    position: absolute;
+    padding: 10px;
+    z-index: 4;
+    opacity: 0.7;
+}
+
+.right-addon {
+    right: 0px;
+    color: rgba(0, 0, 0, 0.54);
+}
+
+.inner-addon input,
+.modal-body .inner-addon input {
+    padding-left: 34px;
+    border-radius: 4px !important;
+}
+
+
+/* Paging */
+
+.pagination-eqo ul {
+    margin: 20px 20px 20px 0;
+    float: right;
+}
+
+.pagination {
+    display: inline-block;
+    padding-left: 0;
+    border-radius: 4px;
+}
+
+.custom-pagination.pagination>li>a,
+.custom-pagination.pagination>li>span {
+    border-radius: 0 !important;
+    background-color: #222;
+    border-color: #ccc;
+    color: #9d9d9d;
+}
+
+.custom-pagination.pagination>.active>a,
+.custom-pagination.pagination>.active>span,
+.custom-pagination.pagination>.active>a:hover,
+.custom-pagination.pagination>.active>span:hover,
+.custom-pagination.pagination>.active>a:focus,
+.custom-pagination.pagination>.active>span:focus {
+    color: #fff;
+    background: #333;
+}
+
+
+/* DataGrid */
+
+table {
+    font-family: arial, sans-serif;
+    border-collapse: collapse;
+    width: 100%;
+}
+
+td,
+th {
+    border: 1px solid #333;
+    text-align: center;
+    padding: 8px;
+}
+
+tr:nth-child(odd) {
+    background-color: #f2f2f2;
+}
+
+.checkBox {
+    font-weight: normal;
+}
+
+.printHeader {
+    background-color: #bfbfbf;
+}
+
+.analysisHeader {
+    background-color: #9bc2e6;
+}
+
+.predictionHeader {
+    background-color: #c6e0b4;
+}
+
+tr:nth-child(even) .analysisRow {
+    background-color: #ddebf7;
+}
+
+tr:nth-child(even) .predictRow {
+    background-color: #e2efda;
+}
+
+
+/* Customize DataGrid */
+
+.ag-header-cell-label .ag-header-cell-text {
+    overflow: unset;
+}

@@ -1,21 +1,44 @@
-<!--The content below is only a placeholder and can be replaced.-->
-<div style="text-align:center">
-  <h1>
-    Welcome to {{ title }}!
-  </h1>
-  <img width="300" alt="Angular Logo" src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyNTAgMjUwIj4KICAgIDxwYXRoIGZpbGw9IiNERDAwMzEiIGQ9Ik0xMjUgMzBMMzEuOSA2My4ybDE0LjIgMTIzLjFMMTI1IDIzMGw3OC45LTQzLjcgMTQuMi0xMjMuMXoiIC8+CiAgICA8cGF0aCBmaWxsPSIjQzMwMDJGIiBkPSJNMTI1IDMwdjIyLjItLjFWMjMwbDc4LjktNDMuNyAxNC4yLTEyMy4xTDEyNSAzMHoiIC8+CiAgICA8cGF0aCAgZmlsbD0iI0ZGRkZGRiIgZD0iTTEyNSA1Mi4xTDY2LjggMTgyLjZoMjEuN2wxMS43LTI5LjJoNDkuNGwxMS43IDI5LjJIMTgzTDEyNSA1Mi4xem0xNyA4My4zaC0zNGwxNy00MC45IDE3IDQwLjl6IiAvPgogIDwvc3ZnPg==">
-</div>
-<h2>Here are some links to help you start: </h2>
-<ul>
-  <li>
-    <h2><a target="_blank" rel="noopener" href="https://angular.io/tutorial">Tour of Heroes</a></h2>
-  </li>
-  <li>
-    <h2><a target="_blank" rel="noopener" href="https://angular.io/cli">CLI Documentation</a></h2>
-  </li>
-  <li>
-    <h2><a target="_blank" rel="noopener" href="https://blog.angular.io/">Angular blog</a></h2>
-  </li>
-</ul>
+<main id="main" class="large-text">
+    <div id="topBtnArea">
+        <div class="row">
+            <div class="col-sm-6">
+            </div>
+            <div ng-class="col-sm-6" style="text-align:right;">
+                <div class="input-group inner-addon" id="div-search">
+                    <input type="text" class="form-control flexdatalist" id="search-box-flexdatalist" autocomplete="off" placeholder="Search">
+                    <a *ngIf="searchText" (click)="clearSearch()">
+                        <i class="glyphicon glyphicon-remove right-addon"></i>
+                    </a>
+                </div>
 
-<router-outlet></router-outlet>
+                <select id="numbFilter" class="form-control" title="DISPLAY_COUNT" data-toggle="tooltip" data-placement="bottom-right" name="DataTables_Table_0_length" aria-controls="DataTables_Table_0">
+                          <option value="10" selected="selected" >10</option>
+                          <option value="25">25</option>
+                          <option value="50">50</option>
+                          <option value="100">100</option>
+                      </select>
+            </div>
+        </div>
+    </div>
+</main>
+
+<div text-align="right" class="pagination-eqo pagination-eqo-job pagination-floating-job">
+    <ul class="custom-pagination pagination-sm eqo-pagination pagination ng-isolate-scope ng-not-empty ng-valid" total-items="vm.jobTotalItems" items-per-page="vm.jobItemsPerPage" ng-model="vm.jobCurrentPage" ng-change="vm.onJobListPageChanged(jobCurrentPage)"
+        next-text=">" last-text=">>" first-text="<<" previous-text="<" boundary-link-numbers="true" rotate="false" ng-hide="(vm.jobItemsPerPage >= vm.jobTotalItems)" max-size="vm.maxSize" aria-hidden="false" aria-invalid="false">
+        <li class="pagination-prev ng-scope disabled"><a href="" class="ng-binding">&lt;</a></li>
+        <li ng-repeat="page in pages track by $index" ng-class="{active: page.active,disabled: ngDisabled&amp;&amp;!page.active}" class="pagination-page ng-scope active"><a href="" class="ng-binding">1</a></li>
+        <li ng-repeat="page in pages track by $index" ng-class="{active: page.active,disabled: ngDisabled&amp;&amp;!page.active}" class="pagination-page ng-scope"><a href="" class="ng-binding">2</a></li>
+        <li ng-repeat="page in pages track by $index" ng-class="{active: page.active,disabled: ngDisabled&amp;&amp;!page.active}" class="pagination-page ng-scope"><a href="" class="ng-binding">3</a></li>
+
+        <li ng-if="::directionLinks" ng-class="{disabled: noNext()||ngDisabled}" class="pagination-next ng-scope"><a href="" ng-click="selectPage(page + 1, $event)" class="ng-binding">&gt;</a></li>
+
+    </ul>
+</div>
+
+<div class="container">
+    <div class="row">
+        <input type='text' (keyup)="onQuickFilterChanged($event)" id="quickFilterInput" style="width: 250px" class="form-control" placeholder="Type text to filter..." />
+        <ag-grid-angular style='width: 100%; height: 500px;' class='ag-theme-balham' [gridOptions]="gridOptions" (gridReady)="onGridReady($event)">
+        </ag-grid-angular>
+    </div>
+</div>
