@@ -24,11 +24,20 @@ export class AppComponent {
   ngOnInit() {
     this.gridOptions = {} as GridOptions;
     this.gridOptions.defaultColDef = {
-      sortable: true,
       resizable: true
     };
     this.gridOptions.columnDefs = this.createColumnDefs();
     this.gridOptions.rowData = this.createRowData();
+    // tslint:disable-next-line:only-arrow-functions
+    this.gridOptions.getRowStyle = function(params) {
+      if (params.node.rowIndex % 2 === 0) {
+      return { background: 'red' }
+      }
+  }
+  }
+
+  onFirstDataRendered(params) {
+    params.api.sizeColumnsToFit();
   }
 
   onGridReady(params) {
@@ -36,17 +45,28 @@ export class AppComponent {
     this.gridColumnApi = params.columnApi;
   }
 
+  autoSizeAll() {
+    const allColumnIds = [];
+    // tslint:disable-next-line:only-arrow-functions
+    this.gridColumnApi.getAllColumns().forEach(function(column) {
+      allColumnIds.push(column.colId);
+    });
+    this.gridColumnApi.autoSizeColumns(allColumnIds);
+  }
+
   private createColumnDefs() {
     return [
-        {headerName: '#', field: 'id', width: 70, headerClass: 'printHeader'},
-        {headerName: 'JobName', field: 'JobName', width: 160, headerClass: 'printHeader'},
-        {headerName: 'DataName', field: 'DataName', width: 150, headerClass: 'printHeader'},
-        {headerName: 'ProcessJobID', field: 'ProcessJobID', headerClass: 'printHeader'},
-        {headerName: 'PDFAnalysisReportCreationDateTime', field: 'PDFAnalysisReportCreationDateTime', headerClass: 'analysisHeader'},
-        {headerName: 'PDFAnalysisTime', field: 'PDFAnalysisTime', headerClass: 'analysisHeader'},
-        {headerName: 'AnalysisResult', field: 'AnalysisResult', headerClass: 'analysisHeader'},
-        {headerName: 'OutputPredictionReportCreationDateTime', field: 'OutputPredictionReportCreationDateTime', headerClass: 'predictionHeader'},
-        {headerName: 'SimulationResult', field: 'SimulationResult', headerClass: 'predictionHeader'},
+        {headerName: '#', field: 'id', headerClass: 'printHeader', cellClass: 'cellHeader', width: 50},
+        {headerName: 'JobName', field: 'JobName', headerClass: 'printHeader', cellClass: 'cellHeader'},
+        {headerName: 'DataName', field: 'DataName', headerClass: 'printHeader', cellClass: 'cellHeader'},
+        {headerName: 'ProcessJobID', field: 'ProcessJobID', headerClass: 'printHeader', cellClass: 'cellHeader'},
+        {headerName: 'PDFAnalysisReportCreationDateTime', field: 'PDFAnalysisReportCreationDateTime', width: 250,
+        suppressSizeToFit: true, headerClass: 'analysisHeader', cellClass: 'cellAnalysisHeader'},
+        {headerName: 'PDFAnalysisTime', field: 'PDFAnalysisTime', headerClass: 'analysisHeader', cellClass: 'cellAnalysisHeader'},
+        {headerName: 'AnalysisResult', field: 'AnalysisResult', headerClass: 'analysisHeader', cellClass: 'cellAnalysisHeader'},
+        {headerName: 'OutputPredictionReportCreationDateTime', field: 'OutputPredictionReportCreationDateTime',
+        headerClass: 'predictionHeader', cellClass: 'cellPredictionHeader'},
+        {headerName: 'SimulationResult', field: 'SimulationResult', headerClass: 'predictionHeader', cellClass: 'cellPredictionHeader'},
       ];
   }
 

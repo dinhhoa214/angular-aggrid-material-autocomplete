@@ -38,7 +38,7 @@
 <div class="container">
     <div class="row">
         <input type='text' (keyup)="onQuickFilterChanged($event)" id="quickFilterInput" style="width: 250px" class="form-control" placeholder="Type text to filter..." />
-        <ag-grid-angular style='width: 100%; height: 500px;' class='ag-theme-balham' [gridOptions]="gridOptions" (gridReady)="onGridReady($event)">
+        <ag-grid-angular style='width: 100%; height: 500px;' class='ag-theme-balham' [gridOptions]="gridOptions" (gridReady)="onGridReady($event)" (firstDataRendered)="onFirstDataRendered($event)">
         </ag-grid-angular>
     </div>
 </div>
